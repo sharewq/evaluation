@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.chinapopin.evaluate</groupId>
+    <artifactId>chinapopin-evaluate-project</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-RELEASE</version>
+
+    <modules>
+        <module>chinapopin-evaluate-bean</module>
+        <module>chinapopin-evaluate-dao</module>
+        <module>chinapopin-evaluate-service</module>
+        <module>chinapopin-evaluate-web</module>
+        <module>chinapopin-evaluate-job</module>
+        <module>chinapopin-evaluate-controller</module>
+    </modules>
+
+    <distributionManagement>
+        <repository>
+            <id>prod</id>
+            <name>Web Prod</name>
+            <url>https://chinapopin.com:18444/nexus/repository/web-release/</url>
+        </repository>
+        <snapshotRepository>
+            <id>dev</id>
+            <name>Web Dev</name>
+            <url>https://chinapopin.com:18444/nexus/repository/web-snapshot/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <profiles>
+        <profile>
+            <id>prod</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profileActive>prod</profileActive>
+                <virtual.directory>evaluate</virtual.directory>
+                <log4jLevel>INFO</log4jLevel>
+            </properties>
+            <repositories>
+                <repository>
+                    <id>prod</id>
+                    <url>https://chinapopin.com:18444/nexus/repository/web-release/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+
+    </profiles>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.locales>zh_CN</project.build.locales>
+        <project.build.jdk>${java.version}</project.build.jdk>
+        <java.version>1.8</java.version>
+        <spring.boot.version>1.5.3.RELEASE</spring.boot.version>
+        <spring.security.jwt.version>1.0.7.RELEASE</spring.security.jwt.version>
+        <spring.security.oauth.version>2.1.0.RELEASE</spring.security.oauth.version>
+        <spring.boot.mybatis.version>1.2.0</spring.boot.mybatis.version>
+        <spring.loaded.version>1.2.6.RELEASE</spring.loaded.version>
+        <guava.version>22.0</guava.version>
+        <fastjson.version>1.2.35</fastjson.version>
+        <oracle.version>11.2.0.3</oracle.version>
+        <druid.version>1.1.1</druid.version>
+        <persistence.api.version>1.0.2</persistence.api.version>
+        <mybatis.generator.version>1.3.5</mybatis.generator.version>
+        <mybatis.version>3.4.4</mybatis.version>
+        <mapper.version>3.4.0.2</mapper.version>
+        <maven.source.plugin.version>3.0.1</maven.source.plugin.version>
+        <maven.compiler.plugin.version>3.6.1</maven.compiler.plugin.version>
+        <maven.surefire.plugin>2.20</maven.surefire.plugin>
+
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven.source.plugin.version}</version>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${project.build.jdk}</source>
+                    <target>${project.build.jdk}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

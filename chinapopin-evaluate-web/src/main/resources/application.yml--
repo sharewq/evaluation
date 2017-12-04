@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: chinapopin-evaluate-web
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+server:
+  port: 8082
+datasource:
+  enableSlave:
+  type: com.alibaba.druid.pool.DruidDataSource
+  master:
+    #url: jdbc:mysql://100.98.100.253:3306/rkw_test?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&useSSL=false
+    #username: rkwtest
+    #password: tEst@2013
+    url: jdbc:oracle:thin:@10.64.39.117:1521:rktestdb
+    username: rktest
+    password: a
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    max-active: 15
+    initial-size: 2
+    min-idle: 3
+    max-wait: 60000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    poolPreparedStatements: true
+
+logging:
+  config: classpath:log4j2.xml
+deptId: 510000000000
+#evaluateHttpUrl: http://10.64.39.99:9003/sjba
+evaluateHttpUrl: http://10.64.54.237:8080/sjba
+#evaluateHttpUrl: http://10.64.39.122:8080/sjba
+
+switch_fwpj: 1
+switch_czrk: 1

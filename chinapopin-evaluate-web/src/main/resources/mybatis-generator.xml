@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="Mysql" targetRuntime="tk.mybatis.mapper.generator.TkMyBatis3Impl" defaultModelType="flat">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$" />
+            <property name="replaceString" value="Criteria" />
+        </plugin>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.chinapopin.framework.datasource.utils.MyMapper"/>
+            <property name="caseSensitive" value="true"/>
+        </plugin>
+
+        <!--   <plugin type="tk.mybatis.mapper.generator.ColumnValidatorPlugin">
+               <property name="src" value="./src/main/resources/param.properties" />
+           </plugin>-->
+
+        <commentGenerator type="tk.mybatis.mapper.generator.MapperCommentGenerator">
+            <property name="suppressDate" value="true" />
+            <property name="suppressAllComments" value="false" />
+        </commentGenerator>
+
+        <jdbcConnection  connectionURL="jdbc:oracle:thin:@10.64.39.117:1521:rktestdb"
+                         driverClass="oracle.jdbc.driver.OracleDriver" userId="rktest" password="a">
+        </jdbcConnection>
+        <!-- <jdbcConnection  connectionURL="jdbc:mysql://192.168.2.211:3306/mzxt"
+                         driverClass="com.mysql.jdbc.Driver" userId="mzxt" password="a">
+        </jdbcConnection> -->
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.chinapopin.evaluate.bean"
+                            targetProject="../src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!--
+                <sqlMapGenerator  targetPackage="mybatis.mappers"
+                                  targetProject="../src/main/resources">
+                    <property name="enableSubPackages" value="true" />
+                </sqlMapGenerator>
+        -->
+        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.chinapopin.evaluate.dao" targetProject="../src/main/java" >
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <table tableName="czrk_xmbg_temp"  mapperName="{0}Dao" enableSelectByExample="false" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"  >
+            <!--<generatedKey column="u_id" sqlStatement="MySql" identity="true" />-->
+        </table>
+
+    </context>
+</generatorConfiguration>

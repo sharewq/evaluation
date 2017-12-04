@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration  monitorInterval="30">
+    <Properties>
+        <property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} |-%-5level [%thread] %c [%L] -| %msg%n</property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout charset="UTF-8" pattern="${LOG_PATTERN}"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.apache.catalina.util.LifecycleBase" level="WARN" />
+        <Logger name="org.apache.coyote.http11.Http11NioProtocol" level="WARN" />
+        <Logger name="org.apache.tomcat.util.net.NioSelectorPool" level="WARN" />
+        <Logger name="org.hibernate.validator.internal.util.Version" level="WARN" />
+        <logger name="org.glassfish.jersey.servlet.WebComponent" level="OFF" additivity="false"/>
+        <Logger name="io.swagger" level="WARN" />
+        <Logger name="org.reflections.Reflections" level="WARN" />
+        <Logger name="org.springframework" level="INFO" />
+        <Logger name="io.swagger" level="WARN" />
+        <Logger name="org.reflections" level="WARN" />
+        <Logger name="org.hibernate.validator" level="WARN" />
+        <Logger name="com.chinapopin.framework" level="${log4jLevel}" />
+        <Logger name="org.mybatis" level="WARN" />
+        <Logger name="org.mybatis.spring" level="WARN"/>
+        <Root level="${log4jLevel}">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

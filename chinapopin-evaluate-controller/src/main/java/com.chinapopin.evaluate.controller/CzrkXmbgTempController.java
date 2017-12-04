@@ -27,6 +27,7 @@ public class CzrkXmbgTempController {
     public ResponseMessage getEvaluateData(String startDate) {
         try {
 
+            System.out.println("dev");
             return czrkXmbgTempService.CzrkXmbgProcess(startDate);
         } catch (Exception e) {
             logger.info("获取常住人口项目变更数据错误");
